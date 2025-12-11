@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klasifikasi Upacara Adat Nusantara</title>
+    <link rel="stylesheet" href="klasifikasi.css"> </head>
+<body>
+
+    <main class="classification-container">
+        
+        <a href="upacara.html" class="home-button">← Kembali ke Beranda</a>
+
+        <a href="simbol.html" class="next-button">Selanjutnya: Simbolisme Ritual →</a>
+        
+        
+        <h1>Klasifikasi Fungsional Upacara Adat</h1>
+        <p class="description">Temukan tujuan di balik ritual! Upacara dikelompokkan berdasarkan peran dan fungsi utamanya dalam masyarakat.</p>
+
+        <div class="category-tabs">
+            <button class="tab-button active" data-category="siklus">Siklus Kehidupan</button>
+            <button class="tab-button" data-category="pertanian">Musim & Pertanian</button>
+            <button class="tab-button" data-category="keagamaan">Keagamaan & Peringatan</button>
+        </div>
+
+        <div id="content-siklus" class="category-content active">
+            <h2>Siklus Kehidupan (Life Cycle)</h2>
+            <p>Upacara yang dilakukan untuk menandai transisi penting dalam kehidupan individu, mulai dari kelahiran hingga kematian.</p>
+            <div class="card-grid" id="grid-siklus">
+                </div>
+        </div>
+
+        <div id="content-pertanian" class="category-content">
+            <h2>Musim, Pertanian, dan Kesuburan</h2>
+            <p>Ritual yang berhubungan dengan alam, seperti panen, musim tanam, laut, dan permohonan kesuburan/keselamatan.</p>
+            <div class="card-grid" id="grid-pertanian">
+                </div>
+        </div>
+
+        <div id="content-keagamaan" class="category-content">
+            <h2>Keagamaan dan Peringatan</h2>
+            <p>Perayaan untuk memperingati hari besar agama atau tokoh suci, seringkali merupakan akulturasi budaya lokal dan agama formal.</p>
+            <div class="card-grid" id="grid-keagamaan">
+                </div>
+        </div>
+
+    </main>
+
+    <script src="klasifikasi.js"></script>
+</body>
+</html>

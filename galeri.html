@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri & Detail Budaya - Warisan Nusantara</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Gaya spesifik untuk Galeri (Tetap) --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            background-color: var(--color-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer; /* Menandakan elemen bisa diklik */
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+        /* ... gaya item galeri lainnya ... */
+        .gallery-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-caption-box {
+            padding: 1rem 1.2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .gallery-caption-box h4 {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+        /* ... gaya item galeri lainnya ... */
+
+        /* --- Gaya CSS untuk Modal (Popup) Baru --- */
+        .modal-overlay {
+            display: none; /* Tersembunyi secara default */
+            position: fixed;
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8); /* Background gelap transparan */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: var(--color-white);
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation-name: animatetop;
+            animation-duration: 0.4s;
+        }
+        
+        @keyframes animatetop {
+            from {top: -300px; opacity: 0}
+            to {top: 0; opacity: 1}
+        }
+
+        .modal-close {
+            color: var(--color-text);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-close:hover,
+        .modal-close:focus {
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+        
+        #modalTitle {
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-family: var(--font-serif);
+        }
+
+        .modal-content p strong {
+            color: var(--color-accent);
+        }
+        
+        .modal-content hr {
+            margin: 1rem 0;
+            border-color: #f5f5f4;
+        }
+        /* --- Gaya Artikel Detail (Tetap) --- */
+        .sub-heading-blue {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            color: #0b5345;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #e7e5e4;
+            padding-bottom: 5px;
+        }
+
+        .section-highlight {
+            background-color: #fff8e1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--color-accent);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-inner">
+            <p class="subtitle-header">Warisan Nusantara</p>
+            <h1 class="title-header">Galeri & Informasi Detail Budaya</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <article class="card animate-on-scroll">
+            <div class="card-content">
+                
+                <h2 id="galeri-visual" class="article-title" style="text-align: center; margin-bottom: 2rem; color: var(--color-primary);">
+                    Klik Gambar untuk Detail Jenis & Ciri Khas
+                </h2>
+                
+                <div class="gallery-grid">
+    
+    <div class="gallery-item animate-on-scroll" data-id="batik">
+        <img src="pembatik-pemula.jpg" alt="Batik Tulis">
+        <div class="gallery-caption-box">
+            <h4>Batik Tulis</h4>
+            <p>Batik Tulis adalah seni melukis di atas kain menggunakan lilin... (Klik untuk detail)</p>
+        </div>
+    </div>
+    
+    <div class="gallery-item animate-on-scroll" data-id="saman" data-animation="slide-left">
+        <img src="tarisaman.jpeg" alt="Tari Saman">
+        <div class="gallery-caption-box">
+            <h4>Tari Saman</h4>
+            <p>Tarian asal Suku Gayo, Aceh, ini terkenal karena kecepatan dan kekompakan gerak... (Klik untuk detail)</p>
+        </div>
+    </div>
+
+    <div class="gallery-item animate-on-scroll" data-id="wayang" data-animation="slide-right">
+        <img src="wayangkulit.jpg" alt="Wayang Kulit">
+        <div class="gallery-caption-box">
+            <h4>Wayang Kulit</h4>
+            <p>Seni pertunjukan bayangan yang menggunakan boneka kulit kerbau, diiringi oleh Gamelan... (Klik untuk detail)</p>
+        </div>
+    </div>
+
+    <div class="gallery-item animate-on-scroll" data-id="tongkonan">
+        <img src="arsitekturvernakulartoraja.jpeg" alt="Rumah Adat Tongkonan">
+        <div class="gallery-caption-box">
+            <h4>Rumah Tongkonan (Toraja)</h4>
+            <p>Rumah tradisional suku Toraja ini memiliki ciri khas atap melengkung yang menyerupai perahu... (Klik untuk detail)</p>
+        </div>
+    </div>
+    
+    <div class="gallery-item animate-on-scroll" data-id="gamelan" data-animation="slide-left">
+        <img src="sejarahgamelan.jpg" alt="Gamelan Jawa">
+        <div class="gallery-caption-box">
+            <h4>Alat Musik Gamelan</h4>
+            <p>Gamelan adalah ansambel musik tradisional yang didominasi oleh instrumen perunggu... (Klik untuk detail)</p>
+        </div>
+    </div>
+    
+    <div class="gallery-item animate-on-scroll" data-id="tenun" data-animation="slide-right">
+        <img src="Tenunsumbatimur.jpg" alt="Tenun Ikat">
+        <div class="gallery-caption-box">
+            <h4>Tenun Ikat Sumba</h4>
+            <p>Kain tradisional ini dibuat melalui teknik mengikat benang secara presisi sebelum dicelup... (Klik untuk detail)</p>
+        </div>
+    </div>
+
+    <div class="gallery-item animate-on-scroll" data-id="keris">
+        <img src="keris.jpeg" alt="Keris Jawa">
+        <div class="gallery-caption-box">
+            <h4>Keris</h4>
+            <p>Senjata tikam tradisional yang memiliki bilah bergelombang atau lurus, dianggap memiliki kekuatan spiritual... (Klik untuk detail)</p>
+        </div>
+    </div>
+
+    <div class="gallery-item animate-on-scroll" data-id="reog" data-animation="slide-left">
+        <img src="reogponorogo.jpg" alt="Reog Ponorogo">
+        <div class="gallery-caption-box">
+            <h4>Reog Ponorogo</h4>
+            <p>Seni pertunjukan tradisional yang menampilkan penari berkepala singa (Singa Barong) yang sangat berat... (Klik untuk detail)</p>
+        </div>
+    </div>
+
+    <div class="gallery-item animate-on-scroll" data-id="angklung" data-animation="slide-right">
+        <img src="angklong.jpg" alt="Angklung">
+        <div class="gallery-caption-box">
+            <h4>Angklung</h4>
+            <p>Alat musik multitonal yang terbuat dari bambu. Dimainkan dengan cara digoyangkan dan mengajarkan harmoni... (Klik untuk detail)</p>
+        </div>
+    </div>
+
+    <div class="gallery-item animate-on-scroll" data-id="barong">
+        <img src="taribaroong.jpg" alt="Tari Barong">
+        <div class="gallery-caption-box">
+            <h4>Tari Barong (Bali)</h4>
+            <p>Tarian suci yang menggambarkan pertarungan abadi antara kebaikan (Barong) melawan kejahatan (Rangda)... (Klik untuk detail)</p>
+        </div>
+    </div>
+
+    <div class="gallery-item animate-on-scroll" data-id="ulos" data-animation="slide-left">
+        <img src="ulos.jpeg" alt="Kain Ulos">
+        <div class="gallery-caption-box">
+            <h4>Kain Ulos (Batak)</h4>
+            <p>Kain tenun tradisional Batak yang melambangkan berkat, kasih sayang, dan penghormatan... (Klik untuk detail)</p>
+        </div>
+    </div>
+
+    <div class="gallery-item animate-on-scroll" data-id="rumah_honai" data-animation="slide-right">
+        <img src="honai.jpg" alt="Rumah Honai">
+        <div class="gallery-caption-box">
+            <h4>Rumah Honai (Papua)</h4>
+            <p>Rumah adat suku Dani yang berbentuk bulat dan atap jerami kerucut, efektif menahan suhu dingin... (Klik untuk detail)</p>
+        </div>
+    </div>
+
+    <div class="gallery-item animate-on-scroll" data-id="mandau">
+        <img src="Mandau.jpg" alt="Mandau">
+        <div class="gallery-caption-box">
+            <h4>Mandau (Dayak)</h4>
+            <p>Senjata tajam tradisional suku Dayak yang berfungsi sebagai senjata perang dan simbol kepahlawanan... (Klik untuk detail)</p>
+        </div>
+    </div>
+
+    <div class="gallery-item animate-on-scroll" data-id="sisingaan" data-animation="slide-left">
+        <img src="Sisingaan-2.jpg" alt="Sisingaan">
+        <div class="gallery-caption-box">
+            <h4>Sisingaan (Subang)</h4>
+            <p>Kesenian rakyat yang menampilkan boneka singa yang diarak sambil dinaiki anak-anak, melambangkan penolakan... (Klik untuk detail)</p>
+        </div>
+    </div>
+
+    <div class="gallery-item animate-on-scroll" data-id="noken" data-animation="slide-right">
+        <img src="Noken.jpg" alt="Noken">
+        <div class="gallery-caption-box">
+            <h4>Noken (Papua)</h4>
+            <p>Tas tradisional khas Papua yang terbuat dari serat kayu atau daun yang dirajut, digunakan dengan cara digantung di kepala... (Klik untuk detail)</p>
+        </div>
+    </div>
+    
+    <div class="gallery-item animate-on-scroll" data-id="tari_piring">
+        <img src="tariipiring.jpg" alt="Tari Piring">
+        <div class="gallery-caption-box">
+            <h4>Tari Piring (Minang)</h4>
+            <p>Tarian persembahan yang menampilkan gerakan cepat dan indah dengan membawa piring di telapak tangan... (Klik untuk detail)</p>
+        </div>
+    </div>
+    
+</div>
+                    </div>
+                <div class="call-to-action animate-on-scroll" style="margin-top: 4rem;">
+                    <a href="index.html" class="button-primary" style="background-color: #57534e;">← Kembali ke Beranda Utama</a>
+                </div>
+            </div>
+                </div>
+
+               
+        </article>
+
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Pelestarian Budaya Lokal. SMAN 5 TARUNA BRAWIJAYA.</p>
+    </footer>
+
+    <div id="budayaModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h3 id="modalTitle">Judul Budaya</h3>
+            <p><strong>Jenis:</strong> <span id="modalType"></span></p>
+            <p><strong>Asal:</strong> <span id="modalOrigin"></span></p>
+            <hr>
+            <p id="modalDetails"></p>
+        </div>
+  
+    <script src="script.js"></script>
+    
+</body>
+</html>

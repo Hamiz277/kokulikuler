@@ -1,0 +1,228 @@
+/* --- Variabel Warna --- */
+:root {
+    --color-primary: #8b4513; /* Cokelat Kayu */
+    --color-accent: #cc6600;  /* Oranye Tua */
+    --color-text: #333;
+    --color-bg: #f5f5dc;      
+    --color-shadow: rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: Georgia, serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+}
+
+.gallery-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px var(--color-shadow);
+}
+
+h1 {
+    text-align: center;
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 10px;
+}
+
+.description {
+    text-align: center;
+    margin-bottom: 30px;
+    font-style: italic;
+    color: #666;
+}
+
+/* --- Galeri Grid (Responsif) --- */
+.gallery-grid {
+    display: grid;
+    /* Membuat kolom menyesuaikan: minimal 250px per kolom */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 25px;
+    padding: 0;
+    list-style: none;
+}
+
+/* --- Kartu Upacara --- */
+.culture-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px var(--color-shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.culture-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.card-image {
+    width: 100%;
+    height: 180px; /* Tinggi gambar di kartu */
+    background-size: cover;
+    background-position: center;
+}
+
+/* =========================================================
+   DEFINISI GAMBAR (Sesuaikan URL Gambar Anda)
+   ========================================================= */
+
+.card-image.ngaben { background-image: url('ngaben'); }
+.card-image.rambu-solo { background-image: url('Rambu.webp'); }
+.card-image.sekaten { background-image: url('sekaten.webp'); }
+.card-image.maudu-lompoa { background-image: url('maudu.webp'); }
+.card-image.pasola { background-image: url('Pasola.jpg'); }
+.card-image.tiwah { background-image: url('tiwah.jpg'); }
+.card-image.bau-nyale { background-image: url('bau.jpeg'); }
+.card-image.seren-taun { background-image: url('seren.webp'); }
+.card-image.tabuik { background-image: url('tabuik.jpg'); }
+.card-image.fahombo-batu { background-image: url('fahombo.jpeg'); }
+.card-image.tabalong-bersunat { background-image: url('tabalong.jpg'); }
+.card-image.rokat-tase { background-image: url('rokattanse.webp'); }
+
+
+.card-content {
+    padding: 10px 15px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.card-content h3 {
+    margin: 5px 0 0;
+    color: var(--color-primary);
+}
+.card-content p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* =========================================================
+   GAYA MODAL (POP-UP)
+   ========================================================= */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 8% auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    position: relative;
+    animation: fadeIn 0.4s;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: var(--color-primary);
+}
+
+#modal-detail p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+#modal-detail p strong {
+    color: var(--color-accent);
+    display: block;
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+@keyframes fadeIn {
+    from {top: -50px; opacity: 0;}
+    to {top: 0; opacity: 1;}
+}
+/* --- Gaya Tombol Kembali ke Beranda (VERSI BESAR) --- */
+
+.home-button {
+    display: inline-block;
+    background-color: var(--color-accent); /*  Warna coklat keemasan */
+    color: white;
+    
+    /* Peningkatan Ukuran: */
+    padding: 15px 25px; /* Menambah ruang di dalam tombol */
+    font-size: 1.1em;   /* Meningkatkan ukuran font */
+    margin-bottom: 30px; /* Menambah jarak dari header di bawahnya */
+    
+    text-decoration: none;
+    border-radius: 8px; /* Sedikit lebih membulat */
+    font-weight: bold;
+    letter-spacing: 0.5px; /* Sedikit ruang antar huruf */
+    
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    border: 2px solid var(--color-primary); /* Border lebih tebal */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan */
+}
+
+.home-button:hover {
+    background-color: var(--color-primary); /* Warna berubah menjadi cokelat tua saat disentuh */
+    transform: translateY(-3px); /* Efek terangkat lebih tinggi */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+/* --- Gaya Tombol Selanjutnya (Next Button) --- */
+
+.next-button {
+    display: inline-block;
+    
+    /* Menggunakan warna utama untuk menonjol */
+    background-color: var(--color-primary); 
+    color: white;
+    
+    padding: 15px 25px; 
+    font-size: 1.1em;   
+    margin-bottom: 30px; 
+    margin-left: 20px; /* Tambah jarak dari tombol Kembali */
+    
+    text-decoration: none;
+    border-radius: 8px; 
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    border: 2px solid var(--color-primary); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+}
+
+.next-button:hover {
+    background-color: #6a340a; /* Warna lebih gelap saat hover */
+    transform: translateY(-3px); 
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Penyesuaian agar tombol Kembali dan Selanjutnya sejajar */
+.home-button {
+    /* ... (gaya home-button sebelumnya) ... */
+    margin-bottom: 30px; /* Pastikan margin bottom sama */
+}
+
+/* Jika Anda menempatkan kedua tombol dalam satu wadah, Anda bisa gunakan display: flex:
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}

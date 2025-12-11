@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis Uji Pengetahuan Budaya</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .quiz-question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        .options label {
+            display: block;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+        #result-container {
+            display: none; /* Hasil tersembunyi dulu */
+            text-align: center;
+        }
+        #score {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--color-accent);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        </header>
+
+    <main class="container">
+        <article class="card animate-on-scroll">
+            <div class="card-content">
+                <h2 style="text-align: center; color: var(--color-accent); margin-bottom: 2rem;">
+                    Kuis: Pelestarian dan Filosofi Budaya (10 Soal)
+                </h2>
+                
+                <div id="start-screen" style="text-align: center; padding: 20px;">
+    <h2 style="color: var(--color-primary); margin-bottom: 1.5rem;">Uji Pengetahuan Budaya (10 Soal Filosofi)</h2>
+    <p style="margin-bottom: 2rem;">Anda akan diuji mengenai filosofi, pelestarian, dan asal-usul 16 warisan budaya Indonesia.</p>
+    <button class="button-primary" onclick="startQuiz()">Mulai Kuis</button>
+</div>
+
+<div id="quiz-container" class="animate-on-scroll" style="display: none;">
+    </div>
+
+<div id="result-container" style="display: none;">
+    <h3>Skor Akhir Kamu:</h3>
+    <span id="score"></span>
+    <p id="feedback"></p>
+    <a href="kuis.html" class="button-primary" style="margin-top: 20px;">Ulangi Kuis</a>
+</div>
+        </article>
+    </main>
+
+    <script src="script.js"></script> 
+    
+</body>
+<script src="kuis.js"></script> 
+<div id="result-container" style="display: none;">
+    <h3>Skor Akhir Kamu:</h3>
+    <span id="score"></span> / <span>25</span> <p id="feedback"></p>
+    <button class="button-primary" onclick="restartQuiz()" style="margin-top: 20px;">Ulangi Kuis (25 Soal)</button> 
+</div>
+<div class="call-to-action animate-on-scroll" style="margin-top: 4rem;">
+                    <a href="index.html" class="button-primary" style="background-color: #57534e;">← Kembali ke Beranda Utama</a>
+                </div>
+            </div>
+                </div>

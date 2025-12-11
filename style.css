@@ -1,0 +1,300 @@
+/* --- RESET & GLOBAL VARIABLES --- */
+:root {
+    --color-bg: #f5f5f4;        /* Warna Stone-100 */
+    --color-text: #292524;      /* Warna Stone-800 */
+    --color-text-muted: #57534e;/* Warna Stone-600 */
+    --color-primary: #78350f;   /* Warna Amber-900 (Coklat Tua) */
+    --color-accent: #b45309;    /* Warna Amber-700 (Coklat Bata) */
+    --color-white: #ffffff;
+    --font-serif: 'Merriweather', serif;
+    --font-sans: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Agar footer selalu di bawah */
+}
+
+/* --- TYPOGRAPHY --- */
+h1, h2, h3 {
+    font-family: var(--font-serif);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- HEADER --- */
+.main-header {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.subtitle-header {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    opacity: 0.8;
+    margin-bottom: 0.25rem;
+}
+
+.title-header {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* --- MAIN LAYOUT --- */
+.container {
+    flex-grow: 1;
+    width: 100%;
+    max-width: 800px; /* Lebar maksimal konten */
+    margin: 2.5rem auto;
+    padding: 0 1rem;
+}
+
+/* --- CARD COMPONENT --- */
+.card {
+    background-color: var(--color-white);
+    border-radius: 12px;
+    overflow: hidden; /* Agar gambar tidak keluar dari radius */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+                0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e7e5e4;
+}
+
+/* --- IMAGE SECTION --- */
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    background-color: #e5e5e5;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease; /* Efek halus saat hover */
+}
+
+/* Efek Zoom saat mouse diarahkan ke gambar */
+.image-wrapper:hover .card-image {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-end;
+}
+
+.image-caption {
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+/* --- CONTENT SECTION --- */
+.card-content {
+    padding: 2.5rem;
+}
+
+.content-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e7e5e4;
+}
+
+.article-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1c1917;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.article-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-accent);
+    font-style: italic;
+}
+
+/* --- ARTICLE TEXT --- */
+.article-body p {
+    margin-bottom: 1rem;
+    color: var(--color-text-muted);
+    text-align: justify;
+}
+
+.article-quote {
+    border-left: 4px solid var(--color-accent);
+    background-color: #fffbeb; /* Warna background kekuningan tipis */
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #44403c;
+}
+
+/* --- FOOTER --- */
+.main-footer {
+    background-color: #e7e5e4;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-top: 2rem;
+}
+
+/* --- RESPONSIVE DESIGN (HP) --- */
+@media (max-width: 640px) {
+    .image-wrapper {
+        height: 250px;
+    }
+    .card-content {
+        padding: 1.5rem;
+    }
+    .article-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* --- TAMBAHAN UNTUK LIST DAN TOMBOL --- */
+
+/* Sub-judul (digunakan untuk H3) */
+.sub-heading {
+    font-family: var(--font-serif); 
+    font-weight: 700; 
+    color: var(--color-accent); 
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+}
+
+/* Gaya untuk Daftar Poin (Action List) */
+.action-list {
+    margin: 1.5rem 0;
+    padding-left: 20px;
+    list-style: disc; /* Menggunakan bullet point standar */
+    color: var(--color-text-muted);
+}
+
+.action-list li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+/* Gaya untuk Tombol Aksi (Call-to-Action) */
+.call-to-action {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.button-primary {
+    display: inline-block;
+    background-color: var(--color-accent); /* Warna coklat keemasan */
+    color: var(--color-white);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button-primary:hover {
+    background-color: #9a4708; /* Warna sedikit lebih gelap saat hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+/* --- GAYA SIDEBAR (HAMBURGER MENU) BARU --- */
+
+.sidebar {
+    height: 100%; 
+    width: 0; /* Awalnya tersembunyi */
+    position: fixed; 
+    z-index: 200; 
+    top: 0;
+    left: 0;
+    background-color: #333; /* Warna gelap */
+    overflow-x: hidden; 
+    transition: 0.5s; 
+    padding-top: 60px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.sidebar-content {
+    padding: 20px;
+}
+
+.sidebar h2 {
+    color: var(--color-accent);
+    margin-bottom: 2rem;
+    font-family: var(--font-serif);
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 10px;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: white;
+    text-decoration: none;
+}
+
+.anggota-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    background-color: #444;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.anggota-foto {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* Membuat foto berbentuk lingkaran */
+    object-fit: cover;
+    margin-right: 15px;
+    border: 2px solid var(--color-accent);
+}
+
+.anggota-nama {
+    font-weight: 600;
+    margin: 0;
+    color: white;
+    line-height: 1.2;
+}
+
+/* Sembunyikan ikon hamburger saat sidebar terbuka */
+.sidebar-open-indicator {
+    display: none !important;
+}
